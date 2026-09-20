@@ -32,7 +32,7 @@ Late deliveries directly impact customer satisfaction, retention, and operating 
 
 ## Exploratory Data Analysis
 
-![Exploratory Data Analysis](eda_analysis.png)
+![Exploratory Data Analysis](supply_chain_eda.png)
 
 * **Shipping Modes:** Substantial discrepancy in late fulfillment ratios across delivery service tiers.
 * **Scheduled Timeframes:** Compressed scheduled shipping windows correlate with higher incident rates.
@@ -54,7 +54,7 @@ Three supervised classification algorithms were trained and benchmarked against 
 
 ## Champion Model Diagnostics
 
-![Model Evaluation](model_evaluation.png)
+![Model Evaluation](feature_importance_cm.png)
 
 ### Key Insights:
 * **High Precision Focus:** The Random Forest model achieved an **81.88% precision** on delayed orders, minimizing false alarms and ensuring targeted operational interventions.
@@ -73,5 +73,5 @@ Three supervised classification algorithms were trained and benchmarked against 
 ## Project Artifacts & Repository Structure
 
 * `DataCo_Supply_Chain.ipynb`: Complete documented Python workflow covering data cleaning, exploratory analysis, modeling, and evaluation.
-* `eda_analysis.png`: Visual distribution of risk across shipping tiers and geographic regions.
-* `model_evaluation.png`: Normalized confusion matrix and top operational feature importances.
+* `supply_chain_eda.png`: Visual distribution of risk across shipping tiers and geographic regions.
+* `feature_importance_cm.png`: Normalized confusion matrix and top operational feature importances.
