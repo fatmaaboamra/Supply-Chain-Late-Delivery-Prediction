@@ -1,36 +1,38 @@
 # Supply Chain Delivery Risk & Predictive Analytics
 
-An end-to-end predictive modeling project designed to identify and classify e-commerce delivery delay risks (`late_delivery_risk`) prior to order fulfillment, supporting proactive logistics planning.
+An end-to-end machine learning project designed to identify and classify e-commerce delivery delay risks prior to order fulfillment, supporting proactive logistics and supply chain operations.
+
+[View Full Source Code & Analysis (DataCo_Supply_Chain.ipynb)](./DataCo_Supply_Chain.ipynb)
 
 ---
 
 ## Executive Summary
 
-Late deliveries directly impact customer satisfaction, retention, and operational overhead. This project builds a machine learning classification pipeline on international e-commerce transaction data to forecast shipment delays before dispatch, enabling supply chain managers to intervene early.
+Late deliveries directly impact customer satisfaction, retention, and operating margins. This project develops a predictive classification pipeline on international e-commerce transaction data to forecast shipment delays before dispatch, enabling supply chain teams to take corrective operational measures.
 
 * **Target Variable:** `late_delivery_risk` (Binary Classification: On-Time / Early vs. Late Delivery)
 * **Dataset Scope:** 15,900+ verified transaction records across global geographic markets.
-* **Champion Model:** Random Forest Classifier achieving **68.75% Accuracy** and an **81.88% Precision** on late delivery detection.
+* **Champion Model:** Random Forest Classifier achieving **68.75% Accuracy** and an **81.88% Precision** on late delivery identification.
 
 ---
 
-## Technical Pipeline & Methodology
+## Technical Methodology
 
 ### 1. Data Cleaning & Leakage Prevention
-* **Leakage Elimination:** Removed post-fulfillment variables (such as `days_for_shipping_real` and explicit status tags) that artificially inflate model performance in training.
-* **Integrity Audits:** Validated data boundaries using Interquartile Range (IQR) checks, ensuring strict non-negative constraints on financial and temporal features.
-* **Dimensionality Reduction:** Dropped high-cardinality PII identifiers (names, emails, street details) and attributes with over 50% missingness.
+* **Leakage Elimination:** Excluded post-fulfillment variables (such as actual shipping duration and explicit delivery status flags) that artificially inflate training performance.
+* **Integrity Audits:** Evaluated statistical distribution thresholds using Interquartile Range (IQR) checks, ensuring strict non-negative constraints across pricing and scheduling attributes.
+* **Dimensionality Reduction:** Removed personally identifiable information (PII) including customer names, addresses, emails, and attributes with excessive missing values.
 
 ### 2. Feature Engineering & Preparation
-* **Temporal Extraction:** Generated operational timestamps, including order hour and dispatch day of the week, to capture peak demand fluctuations.
-* **Curated Feature Space:** Standardized 16 business drivers encompassing pricing, order quantities, shipping modes, customer segments, and regional markets.
-* **Class Balance:** Implemented a stratified 80/20 train-test split to preserve natural target class distribution.
+* **Temporal Extraction:** Derived operational indicators, including order hour and dispatch day of the week, to capture temporal order variations.
+* **Selected Feature Space:** Standardized 16 business drivers encompassing pricing, order quantities, shipping modes, customer segments, and regional markets.
+* **Class Balance:** Implemented a stratified 80/20 train-test split to preserve target class proportions.
 
 ---
 
-## Exploratory Data Analysis (EDA)
+## Exploratory Data Analysis
 
-![EDA Insights](eda_analysis.png)
+![Exploratory Data Analysis](eda_analysis.png)
 
 * **Shipping Modes:** Substantial discrepancy in late fulfillment ratios across delivery service tiers.
 * **Scheduled Timeframes:** Compressed scheduled shipping windows correlate with higher incident rates.
@@ -40,7 +42,7 @@ Late deliveries directly impact customer satisfaction, retention, and operationa
 
 ## Model Evaluation & Performance Benchmark
 
-Three supervised algorithms were trained and benchmarked against standard classification metrics:
+Three supervised classification algorithms were trained and benchmarked against standard validation metrics:
 
 | Model | Accuracy (%) | Precision (%) | Recall (%) | F1-Score (%) |
 | :--- | :---: | :---: | :---: | :---: |
@@ -54,9 +56,9 @@ Three supervised algorithms were trained and benchmarked against standard classi
 
 ![Model Evaluation](model_evaluation.png)
 
-### Key Model Takeaways:
-* **High Precision Priority:** The Random Forest model achieved an **81.88% precision** on delayed orders, minimizing false alarms and ensuring targeted operational interventions.
-* **Primary Operational Drivers:** Feature importance analysis reveals that **Shipping Mode**, **Scheduled Shipping Days**, and **Sales per Customer** are the leading determinants of supply chain punctuality.
+### Key Insights:
+* **High Precision Focus:** The Random Forest model achieved an **81.88% precision** on delayed orders, minimizing false alarms and ensuring targeted operational interventions.
+* **Primary Operational Drivers:** Feature importance analysis indicates that **Shipping Mode**, **Scheduled Shipping Days**, and **Sales per Customer** are the primary determinants of on-time delivery performance.
 
 ---
 
@@ -68,8 +70,8 @@ Three supervised algorithms were trained and benchmarked against standard classi
 
 ---
 
-## Tools & Libraries Used
-* **Language:** Python
-* **Data Processing:** Pandas, NumPy
-* **Machine Learning:** Scikit-learn
-* **Visualization:** Matplotlib, Seaborn
+## Project Artifacts & Repository Structure
+
+* `DataCo_Supply_Chain.ipynb`: Complete documented Python workflow covering data cleaning, exploratory analysis, modeling, and evaluation.
+* `eda_analysis.png`: Visual distribution of risk across shipping tiers and geographic regions.
+* `model_evaluation.png`: Normalized confusion matrix and top operational feature importances.
